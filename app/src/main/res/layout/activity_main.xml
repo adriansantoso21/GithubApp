@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="125dp"
+        android:src="@drawable/logogithub"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/nama_app"/>
+
+    <Button
+        android:id="@+id/btn_splash"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@android:color/transparent"
+        android:text="@string/start"/>
+
+
+
+</LinearLayout>
