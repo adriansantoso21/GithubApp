@@ -7,4 +7,13 @@
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|always" />
+
+    <item
+        android:id="@+id/darkMode"
+        android:title="@string/darkMode"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/favUser"
+        android:title="@string/favUser"
+        app:showAsAction="never" />
 </menu>

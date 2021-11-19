@@ -1,30 +1,38 @@
-package com.example.githubapp
+package com.example.githubapp.activity
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.githubapp.R
+import com.example.githubapp.adapter.UserAdapter
 import com.example.githubapp.databinding.ActivityListViewBinding
+import com.example.githubapp.db.UserHelper
+import com.example.githubapp.entity.User
+import com.example.githubapp.helper.MappingHelper
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 
 class ListViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListViewBinding
     private var UserGithubData: ArrayList<User> = ArrayList()
-
-    companion object{
-        private val TAG = ListViewActivity::class.java.simpleName
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,13 +62,13 @@ class ListViewActivity : AppCompatActivity() {
                 binding.progressBar.visibility = View.INVISIBLE
                 val listUser = ArrayList<User>()
                 val result = String(responseBody)
-                //Log.d(TAG, result)
+                Log.d(TAG, result)
                 try {
                     val jsonArray = JSONArray(result)
                     for (i in 0 until jsonArray.length()) {
                         val jsonObject = jsonArray.getJSONObject(i)
                         val name = jsonObject.getString("login")
-                        UserDetail(name)
+                        userDetail(name)
 
                     }
                     val adapter = UserAdapter(listUser)
@@ -85,7 +93,7 @@ class ListViewActivity : AppCompatActivity() {
         })
     }
 
-    private fun UserDetail(name: String) {
+    private fun userDetail(name: String) {
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
         client.addHeader("Authorization", "token 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")
@@ -99,7 +107,7 @@ class ListViewActivity : AppCompatActivity() {
                 // Jika koneksi berhasil
                 binding.progressBar.visibility = View.INVISIBLE
                 val result = String(responseBody)
-                //Log.d(TAG, result)
+                Log.d(TAG, result)
                 try {
                     val jsonObject = JSONObject(result)
                     val username = jsonObject.getString("login")
@@ -111,6 +119,7 @@ class ListViewActivity : AppCompatActivity() {
                     val follower = jsonObject.getString("followers")
                     val following = jsonObject.getString("following")
                     val repo = jsonObject.getString("public_repos")
+                    val favUser: Boolean = isUserAddedToFav(username)
 
                     UserGithubData.add(
                         User(
@@ -122,7 +131,8 @@ class ListViewActivity : AppCompatActivity() {
                             bio,
                             follower,
                             following,
-                            repo
+                            repo,
+                            favUser
                         )
                     )
                     val adapter = UserAdapter(UserGithubData)
@@ -164,7 +174,7 @@ class ListViewActivity : AppCompatActivity() {
                 binding.progressBar.visibility = View.INVISIBLE
                 val listUser = ArrayList<User>()
                 val result = String(responseBody)
-                //Log.d(TAG, result)
+                Log.d(TAG, result)
                 try {
                     val jsonObject = JSONObject(result)
                     val jsonArray = jsonObject.getJSONArray("items")
@@ -172,7 +182,7 @@ class ListViewActivity : AppCompatActivity() {
                     for (i in 0 until jsonArray.length()) {
                         val jsonObject = jsonArray.getJSONObject(i)
                         val name = jsonObject.getString("login")
-                        UserDetail(name)
+                        userDetail(name)
 
                     }
                     val adapter = UserAdapter(listUser)
@@ -197,7 +207,6 @@ class ListViewActivity : AppCompatActivity() {
         })
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.option_menu, menu)
@@ -208,24 +217,57 @@ class ListViewActivity : AppCompatActivity() {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.queryHint = resources.getString(R.string.search_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            /*
-            Gunakan method ini ketika search selesai atau OK
-             */
+
             override fun onQueryTextSubmit(query: String): Boolean {
-                if(!query.isEmpty()){
+                if(query.isNotEmpty()){
                     UserGithubData.clear()
                     searchUser(query)
                 }
                 return true
             }
 
-            /*
-            Gunakan method ini untuk merespon tiap perubahan huruf pada searchView
-             */
             override fun onQueryTextChange(newText: String): Boolean {
                 return false
             }
         })
         return true
+    }
+
+        private fun isUserAddedToFav(username: String) : Boolean{
+            var userHelper: UserHelper = UserHelper.getInstance(applicationContext)
+            userHelper.open()
+            var flag : Boolean = false
+            lifecycleScope.launch {
+                val deferredNotes = async(Dispatchers.IO) {
+                    val cursor = userHelper.queryById(username)
+                    MappingHelper.mapCursorToArrayList(cursor)
+                }
+                val users = deferredNotes.await()
+                //Log.d("Message", "Isi users sebelum: ${users}")
+                flag = users.size > 0
+            }
+            return flag
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        setMode(item.itemId)
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setMode(selectedMode: Int) {
+        when (selectedMode) {
+            R.id.darkMode -> {
+                val moveDarkMode = Intent(this@ListViewActivity, DarkModeActivity::class.java)
+                startActivity(moveDarkMode)
+            }
+            R.id.favUser -> {
+                val moveFavUser = Intent(this@ListViewActivity, FavoriteUserActivity::class.java)
+                startActivity(moveFavUser)
+            }
+        }
+    }
+
+    companion object{
+        private val TAG = ListViewActivity::class.java.simpleName
     }
 }

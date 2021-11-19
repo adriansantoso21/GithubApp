@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DetailUser"
-    android:layout_margin="12dp">
+    tools:context=".activity.DetailUser"
+    android:padding="16dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/photo"
@@ -24,11 +24,12 @@
         android:id="@+id/repository"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="36dp"
         android:gravity="center"
-        android:text="@string/repository"
-        android:textColor="@color/black"
+        android:text="@string/temp"
+        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/following"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,10 +38,11 @@
         android:id="@+id/following"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="36dp"
-        android:text="@string/following"
-        android:textColor="@color/black"
+        android:text="@string/temp"
+        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/follower"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,10 +51,11 @@
         android:id="@+id/follower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
-        android:text="@string/follower"
-        android:textColor="@color/black"
+        android:text="@string/temp"
+        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/photo"
         app:layout_constraintTop_toTopOf="parent" />
@@ -61,12 +64,11 @@
         android:id="@+id/repositoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
         android:text="@string/judulrepository"
-        android:textColor="@color/black"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/followingTitle"
         app:layout_constraintTop_toBottomOf="@+id/repository" />
@@ -75,11 +77,10 @@
         android:id="@+id/followingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:text="@string/judulfollowing"
-        android:textColor="@color/black"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/followerTitle"
         app:layout_constraintTop_toBottomOf="@+id/following" />
@@ -88,11 +89,9 @@
         android:id="@+id/followerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-
         android:text="@string/judulfollower"
-        android:textColor="@color/black"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/photo"
         app:layout_constraintTop_toBottomOf="@+id/follower" />
@@ -107,7 +106,8 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/nama"
-        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/photo" />
 
@@ -118,7 +118,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/judullocation"
-        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nama" />
 
@@ -130,7 +129,7 @@
         android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="@string/location"
-        android:textColor="@color/black"
+        android:maxLines="1"
         app:layout_constraintStart_toEndOf="@+id/locationTitle"
         app:layout_constraintTop_toBottomOf="@+id/followerTitle" />
 
@@ -141,7 +140,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:text="@string/judulcompany"
-        android:textColor="@color/black"
         app:layout_constraintHorizontal_bias="0.339"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationTitle" />
@@ -154,7 +152,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/company"
-        android:textColor="@color/black"
+        android:maxLines="1"
         app:layout_constraintStart_toEndOf="@+id/companyTitle"
         app:layout_constraintTop_toBottomOf="@+id/location" />
 
@@ -166,7 +164,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/bio"
-        android:textColor="@color/black"
+        android:maxLines="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/companyTitle" />
 
@@ -175,16 +173,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/bio">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="20dp"
+            android:contentDescription="@string/share_to_facebook"
             android:onClick="shareFacebook"
             android:src="@drawable/facebook" />
 
@@ -192,6 +191,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="20dp"
+            android:contentDescription="@string/share_to_twitter"
             android:onClick="shareToTwitter"
             android:src="@drawable/twitter" />
 
@@ -199,12 +199,14 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="20dp"
+            android:contentDescription="@string/share_to_instagram"
             android:onClick="shareToInstagram"
             android:src="@drawable/instagram" />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:contentDescription="@string/share_to_whatsapp"
             android:onClick="shareToWhatsapp"
             android:src="@drawable/whatsapp" />
     </LinearLayout>
@@ -216,15 +218,28 @@
         android:layout_marginTop="16dp"
         android:background="?attr/colorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:tabIndicatorColor="@android:color/holo_red_dark"
         app:tabTextColor="@android:color/white"
         tools:layout_editor_absoluteX="24dp" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="275dp"
         android:layout_marginTop="65dp"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/view_pager"
+        app:layout_anchorGravity="bottom|end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

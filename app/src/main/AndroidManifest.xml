@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubApp">
-        <activity android:name=".DetailUser"></activity>
-        <activity android:name=".ListViewActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.FavoriteUserActivity"></activity>
+        <activity android:name=".activity.DarkModeActivity" />
+        <activity android:name=".activity.DetailUser" />
+        <activity android:name=".activity.ListViewActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

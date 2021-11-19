@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FollowingFragment">
+    tools:context=".activity.FollowingFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/level_list_following"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
     <ProgressBar
         android:id="@+id/progressBarFollowing"
         style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 

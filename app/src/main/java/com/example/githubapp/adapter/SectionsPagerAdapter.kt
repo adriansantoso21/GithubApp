@@ -1,9 +1,10 @@
-package com.example.githubapp
+package com.example.githubapp.adapter
 
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.githubapp.activity.FollowerFragment
+import com.example.githubapp.activity.FollowingFragment
 
 class SectionsPagerAdapter(activity: AppCompatActivity, var username: String) : FragmentStateAdapter(activity) {
     override fun createFragment(position: Int): Fragment {

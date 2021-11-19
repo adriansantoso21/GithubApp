@@ -1,4 +1,4 @@
-package com.example.githubapp
+package com.example.githubapp.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -13,5 +13,6 @@ data class User (
     var bio: String,
     var follower: String,
     var following: String,
-    var repository: String
+    var repository: String,
+    var isFav: Boolean
 ) : Parcelable

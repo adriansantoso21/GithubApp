@@ -7,13 +7,14 @@
 
     <string name="judulcompany">Company : </string>
     <string name="judullocation">Location : </string>
-    <string name="judulrepository">Repo</string>
+    <string name="judulrepository">Repository</string>
     <string name="judulfollower">Follower</string>
     <string name="judulfollowing">Following</string>
     <string name="company">company</string>
+    <string name="temp">xxx</string>
 
     <string name="location">location</string>
-    <string name="repository">Repository</string>
+    <string name="repository">Repo</string>
     <string name="follower">follower</string>
     <string name="following">Following</string>
     <string name="content_tab_text">This is Tab %1$d</string>
@@ -127,4 +128,13 @@
     <string name="search">Enter username</string>
     <string name="search_hint">Enter username</string>
     <string name="bio">bio</string>
+    <string name="share_to_facebook">Share to facebook</string>
+    <string name="share_to_twitter">Share to twitter</string>
+    <string name="share_to_instagram">Share to instagram</string>
+    <string name="share_to_whatsapp">Share to whatsapp</string>
+    <string name="logo_github">Logo github</string>
+    <string name="setting">Open Setting</string>
+    <string name="fav">Add to Favorite</string>
+    <string name="darkMode">Dark Mode</string>
+    <string name="favUser">Favorite</string>
 </resources>
