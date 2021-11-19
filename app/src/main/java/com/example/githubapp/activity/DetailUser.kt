@@ -158,7 +158,6 @@ class DetailUser : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
     fun shareFacebook(view: View) {
         sharenama = findViewById(R.id.nama)
         try {

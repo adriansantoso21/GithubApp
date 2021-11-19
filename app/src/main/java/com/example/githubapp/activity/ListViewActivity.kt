@@ -54,7 +54,7 @@ class ListViewActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
@@ -96,7 +96,7 @@ class ListViewActivity : AppCompatActivity() {
     private fun userDetail(name: String) {
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/users/$name"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
@@ -166,7 +166,7 @@ class ListViewActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token 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")
+        client.addHeader("Authorization", "token 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")
         val url = "https://api.github.com/search/users?q=$query"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {

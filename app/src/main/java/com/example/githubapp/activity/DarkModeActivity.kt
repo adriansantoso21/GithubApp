@@ -16,7 +16,7 @@ import com.example.githubapp.helper.DarkModeViewModel
 import com.example.githubapp.helper.DarkModeViewModelFactory
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class DarkModeActivity : AppCompatActivity() {
 
