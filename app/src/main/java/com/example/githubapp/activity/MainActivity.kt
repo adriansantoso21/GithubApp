@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         AppCompatDelegate.MODE_NIGHT_NO
                     )
                 }
-            })
+            }
+        )
 
         val btnsplash: Button = findViewById(R.id.btn_splash)
         btnsplash.setOnClickListener(this)
